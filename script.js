@@ -40,3 +40,24 @@ seeMoreButtons.forEach((button) => {
 backButton.onclick = function(){
     carousel.classList.remove('showDetail');
 }
+
+// Auto-play functionality (optional)
+let autoPlayInterval;
+const startAutoPlay = () => {
+    autoPlayInterval = setInterval(() => {
+        if (!carousel.classList.contains('showDetail')) {
+            showSlider('next');
+        }
+    }, 5000);
+}
+
+const stopAutoPlay = () => {
+    clearInterval(autoPlayInterval);
+}
+
+// Start auto-play when page loads
+// startAutoPlay();
+
+// Stop auto-play when user interacts
+carousel.addEventListener('mouseenter', stopAutoPlay);
+carousel.addEventListener('mouseleave', startAutoPlay);
